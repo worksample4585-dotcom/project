@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme — SamsonAgri */
+    --background: 210 40% 98%;        /* #f8fafc */
+    --foreground: 222 47% 11%;         /* #0f172a */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 142 71% 36%;            /* green-600 #16a34a */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 142 71% 45%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 142 71% 95%;
+    --accent-foreground: 142 71% 28%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;             /* #e2e8f0 */
+    --input: 214 32% 91%;
+    --ring: 142 71% 36%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 142 71% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 142 71% 36%;
+  }
+
+  .dark {
+    /* Dark theme — SamsonAgri */
+    --background: 222 47% 5%;          /* #0f172a-ish */
+    --foreground: 210 40% 96%;         /* #f1f5f9 */
+
+    --card: 217 33% 12%;               /* #1e293b */
+    --card-foreground: 210 40% 96%;
+
+    --popover: 217 33% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 142 71% 45%;            /* green-500 #22c55e */
+    --primary-foreground: 222 47% 5%;
+    --primary-glow: 142 71% 55%;
+
+    --secondary: 217 33% 17%;          /* #334155 */
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;   /* #94a3b8 */
+
+    --accent: 142 50% 18%;
+    --accent-foreground: 142 71% 75%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 0 0% 0%;
+
+    --info: 217 91% 65%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 217 33% 22%;             /* #334155 */
+    --input: 217 33% 22%;
+    --ring: 142 71% 45%;
+
+    --sidebar-background: 217 33% 12%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 142 71% 45%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 22%;
+    --sidebar-ring: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
+}
+
+/* Print: financial report tab only */
+@media print {
+  .no-print, aside, header.topbar, [role="tablist"] { display: none !important; }
+  body { background: white !important; color: black !important; }
+  .print-area { padding: 24px; }
+}
