@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -47,25 +47,23 @@ const App = () => (
               error: { iconTheme: { primary: "hsl(var(--destructive))", secondary: "hsl(var(--destructive-foreground))" } },
             }}
           />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/" element={<RedirectByRole />} />
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<RedirectByRole />} />
 
-              <Route path="/dashboard" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><Dashboard /></ProtectedRoute>} />
-              <Route path="/deals" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><DealsPage /></ProtectedRoute>} />
-              <Route path="/deals/:id" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><DealDetailPage /></ProtectedRoute>} />
-              <Route path="/documents" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><DocumentsPage /></ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><Dashboard /></ProtectedRoute>} />
+            <Route path="/deals" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><DealsPage /></ProtectedRoute>} />
+            <Route path="/deals/:id" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><DealDetailPage /></ProtectedRoute>} />
+            <Route path="/documents" element={<ProtectedRoute allowedRoles={["admin", "editor"]}><DocumentsPage /></ProtectedRoute>} />
 
-              <Route path="/client" element={<ProtectedRoute allowedRoles={["client"]}><ClientPortalPage /></ProtectedRoute>} />
-              <Route path="/client/deals/:id" element={<ProtectedRoute allowedRoles={["client"]}><DealDetailPage readOnly /></ProtectedRoute>} />
+            <Route path="/client" element={<ProtectedRoute allowedRoles={["client"]}><ClientPortalPage /></ProtectedRoute>} />
+            <Route path="/client/deals/:id" element={<ProtectedRoute allowedRoles={["client"]}><DealDetailPage readOnly /></ProtectedRoute>} />
 
-              <Route path="/admin/users" element={<ProtectedRoute allowedRoles={["admin"]}><UserManagementPage /></ProtectedRoute>} />
-              <Route path="/admin/audit" element={<ProtectedRoute allowedRoles={["admin"]}><AuditLogPage /></ProtectedRoute>} />
+            <Route path="/admin/users" element={<ProtectedRoute allowedRoles={["admin"]}><UserManagementPage /></ProtectedRoute>} />
+            <Route path="/admin/audit" element={<ProtectedRoute allowedRoles={["admin"]}><AuditLogPage /></ProtectedRoute>} />
 
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </TooltipProvider>
       </AuthProvider>
     </ThemeProvider>
